@@ -76,10 +76,10 @@ const PremiumAdsAgencySection = () => {
       }
     }}>
       <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} alignItems="center">
           {/* Left Content Section - 50% width */}
-          <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ width: "100%" }}>
+          <Grid item xs={12} md={6}>
+            <Box>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -320,11 +320,10 @@ const PremiumAdsAgencySection = () => {
           </Grid>
 
           {/* Right Dashboard Section - 50% width */}
-          <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "center" }}>
+          <Grid item xs={12} md={6}>
             <Box sx={{ 
               position: "relative", 
               width: "100%",
-              height: "100%",
               minHeight: "500px",
               display: "flex",
               justifyContent: "center",
