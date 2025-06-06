@@ -5,6 +5,7 @@ import PremiumLanding from './components/PremiumLanding';
 import AdsAgencySection from './components/AdsAgencySection';
 import StatsSection from './components/StatsSection';
 import TestimonialsSection from './components/TestimonialsSection';
+import GoogleAdsExpertSection from './components/GoogleAdsExpertSection';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <AdsAgencySection />
       <StatsSection />
       <TestimonialsSection/>
+      <GoogleAdsExpertSection />
     </div>
   );
 }
