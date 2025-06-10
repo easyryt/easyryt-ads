@@ -1,17 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // <-- Import React Router
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import AdminLogin from './components/AdminDashboard/AdminLogin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Routes>
+        {/* Public route */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        
+        {/* Protected route (authentication to be added later) */}
+        <Route path="/dashboard" element={<AdminDashboard />} />
+        
+        {/* You can add more routes here */}
+        <Route path="*" element={<App />} /> {/* fallback to main app */}
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
