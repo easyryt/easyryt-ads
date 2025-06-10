@@ -18,11 +18,17 @@ const StatsSection = () => {
     triggerOnce: true,
   });
 
+    const handleWhatsApp = () => {
+    window.open('https://wa.me/919958280709', '_blank');
+  };
+
   useEffect(() => {
     if (inView) {
       controls.start("visible");
     }
   }, [controls, inView]);
+
+  
 
   const stats = [
     { number: "750+", label: "Projects Managed" },
@@ -324,6 +330,7 @@ const StatsSection = () => {
           </Typography>
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
             <Button
+            onClick={handleWhatsApp}
               variant="contained"
               sx={{
                 py: { xs: 1.5, sm: 2 },

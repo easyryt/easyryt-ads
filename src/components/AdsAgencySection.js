@@ -546,7 +546,7 @@ const AdsAgencySection = () => {
                     }}
                     style={{
                       position: "absolute",
-                      bottom: "10%",
+                      bottom: "5%",
                       left: "30px",
                       zIndex: 3,
                     }}
@@ -789,70 +789,6 @@ const AdsAgencySection = () => {
                     ))}
                   </Grid>
                 </GlassCard>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-              >
-                <Button
-                  variant="contained"
-                  size="large"
-                  component={motion.div}
-                  whileHover={{
-                    scale: 1.03,
-                    background: "linear-gradient(90deg, #0EA5E9, #0284C7)",
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  sx={{
-                    py: 2,
-                    px: 5,
-                    borderRadius: "16px",
-                    mt: 5,
-                    fontSize: "1.05rem",
-                    fontWeight: 700,
-                    textTransform: "none",
-                    background: "linear-gradient(90deg, #38BDF8, #0EA5E9)",
-                    boxShadow: "0 8px 25px rgba(14, 165, 233, 0.4)",
-                    color: "white",
-                    position: "relative",
-                    overflow: "hidden",
-                    "&:before": {
-                      content: '""',
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      background:
-                        "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent)",
-                      transform: "translateX(-100%)",
-                    },
-                    "&:hover:before": {
-                      transform: "translateX(100%)",
-                      transition: "transform 0.7s ease",
-                    },
-                  }}
-                >
-                  Get Your Free Strategy Session
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{ marginLeft: "12px" }}
-                  >
-                    <path
-                      d="M14 5L21 12M21 12L14 19M21 12H3"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Button>
               </motion.div>
             </motion.div>
           </Grid>

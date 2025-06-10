@@ -19,6 +19,9 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import { motion } from "framer-motion";
 
 const Footer = () => {
+    const handleWhatsApp = () => {
+    window.open('https://wa.me/919958280709', '_blank');
+  };
   return (
     <Box
       component="footer"
@@ -357,6 +360,7 @@ const Footer = () => {
                         boxShadow: "0 6px 24px rgba(255, 75, 43, 0.6)",
                       },
                     }}
+                    onClick={handleWhatsApp}
                   >
                     GET IN TOUCH
                   </Button>
