@@ -76,7 +76,6 @@ const AdsAgencySection = () => {
       sx={{
         py: 12,
         px: { xs: 2, sm: 4, md: 6, lg: 8 },
-        background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)!important",
         position: "relative",
         overflow: "hidden",
         maxWidth: "1800px",
@@ -88,9 +87,6 @@ const AdsAgencySection = () => {
           right: "-300px",
           width: "600px",
           height: "600px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(38, 132, 255, 0.1) 0%, rgba(255,255,255,0) 70%)",
           zIndex: 0,
           filter: "blur(40px)",
         },

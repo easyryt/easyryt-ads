@@ -60,8 +60,6 @@ const StatsSection = () => {
     <Box
       sx={{
         py: { xs: 8, md: 12 },
-        background:
-          "radial-gradient(circle at top right, #0c1224 0%, #020714 70%)",
         position: "relative",
         overflow: "hidden",
         "&:before": {
@@ -72,8 +70,6 @@ const StatsSection = () => {
           width: "600px",
           height: "600px",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(26, 115, 232, 0.15) 0%, rgba(255,255,255,0) 70%)",
           zIndex: 0,
         },
         "&:after": {
@@ -84,8 +80,6 @@ const StatsSection = () => {
           width: "600px",
           height: "600px",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(182, 140, 58, 0.1) 0%, rgba(255,255,255,0) 70%)",
           zIndex: 0,
         },
       }}

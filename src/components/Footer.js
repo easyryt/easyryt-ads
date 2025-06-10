@@ -23,7 +23,6 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#0a1929",
         color: "#e0e0e0",
         width: "100%",
         position: "relative",
@@ -49,8 +48,6 @@ const Footer = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          background:
-            "radial-gradient(circle at 10% 20%, rgba(25, 50, 80, 0.3) 0%, rgba(10, 25, 41, 0) 40%)",
           zIndex: 0,
         }}
       />

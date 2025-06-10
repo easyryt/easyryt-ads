@@ -6,7 +6,6 @@ const PremiumLanding = () => {
   return (
     <Box sx={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #1a2a6c 0%, #2a4b8d 50%, #3a6cb0 100%)',
       py: 8,
       position: 'relative',
       overflow: 'hidden',
@@ -17,9 +16,6 @@ const PremiumLanding = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundImage: 'url(https://png.pngtree.com/thumb_back/fh260/background/20250423/pngtree-the-digital-service-ecosystem-image_17209104.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         opacity: 0.2,
       }
     }}>
@@ -378,16 +374,6 @@ const PremiumLanding = () => {
             </Box>
           </Grid>
         </Grid>
-        
-        {/* Footer */}
-        <Box sx={{ mt: 8, textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', pt: 4 }}>
-          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)' }}>
-            © {new Date().getFullYear()} EasyRyt Solutions. All rights reserved.
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', mt: 1 }}>
-            Google Premier Partner | Certified Google Ads Professionals
-          </Typography>
-        </Box>
       </Container>
     </Box>
   );

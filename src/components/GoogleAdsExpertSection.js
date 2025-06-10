@@ -147,7 +147,6 @@ const GoogleAdsExpertSection = () => {
   return (
     <Box sx={{ 
       py: 10,
-      background: 'radial-gradient(ellipse at top, #0d1117, #0a0d1a)',
       position: 'relative',
       overflow: 'hidden',
       '&:before': {
@@ -158,7 +157,6 @@ const GoogleAdsExpertSection = () => {
         width: 600,
         height: 600,
         borderRadius: '50%',
-        background: 'radial-gradient(rgba(25, 118, 210, 0.15), transparent 70%)',
       },
       '&:after': {
         content: '""',
