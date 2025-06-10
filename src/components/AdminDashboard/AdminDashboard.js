@@ -67,7 +67,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const adminToken = Cookies.get("adminToken");
     if (!adminToken) {
-      navigate("/admin");
+      navigate("/admin/login");
     }
   }, [navigate]);
 
@@ -108,7 +108,6 @@ export default function AdminDashboard() {
         try {
           const data = snapshot.val();
           const applicationsData = [];
-console.log(data,"check data")
           if (data) {
             Object.entries(data).forEach(([key, entry]) => {
               if (entry && typeof entry === "object") {
@@ -143,7 +142,7 @@ console.log(data,"check data")
 
   const handleLogout = () => {
     Cookies.remove("adminToken");
-    navigate("/admin");
+    navigate("/admin/login");
   };
 
   if (!Cookies.get("adminToken")) return null;
