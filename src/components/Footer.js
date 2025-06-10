@@ -334,7 +334,7 @@ const Footer = () => {
                   Expand Your Digital Reach
                 </Typography>
 
-                <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0" , width:"300csspx"}}>
+                <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0" , width:"300px"}}>
                   Partner with our marketing wizards to elevate your brand and
                   reach new audiences. Let's create something extraordinary
                   together.
