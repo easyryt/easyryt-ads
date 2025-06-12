@@ -19,8 +19,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import { motion } from "framer-motion";
 
 const Footer = () => {
-    const handleWhatsApp = () => {
-    window.open('https://wa.me/919958280709', '_blank');
+  const handleWhatsApp = () => {
+    window.open("https://wa.me/919958280709", "_blank");
   };
   return (
     <Box
@@ -301,7 +301,10 @@ const Footer = () => {
                   Expand Your Digital Reach
                 </Typography>
 
-                <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0" , width:"300px"}}>
+                <Typography
+                  variant="body1"
+                  sx={{ mb: 3, color: "#e0e0e0", width: "300px" }}
+                >
                   Partner with our marketing wizards to elevate your brand and
                   reach new audiences. Let's create something extraordinary
                   together.
