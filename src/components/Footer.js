@@ -264,39 +264,6 @@ const Footer = () => {
                   </Box>
                 </Box>
               </Box>
-
-              <Box>
-                <Typography variant="body1" sx={{ mb: 2, color: "#e0e0e0" }}>
-                  Connect with us:
-                </Typography>
-                <Box sx={{ display: "flex", gap: 1.5 }}>
-                  {[
-                    { icon: <LinkedInIcon />, color: "#0077b5" },
-                    { icon: <TwitterIcon />, color: "#1DA1F2" },
-                    { icon: <InstagramIcon />, color: "#E1306C" },
-                    { icon: <FacebookIcon />, color: "#4267B2" },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <IconButton
-                        sx={{
-                          backgroundColor: "rgba(255,255,255,0.1)",
-                          color: "#fff",
-                          transition: "all 0.3s",
-                          "&:hover": {
-                            backgroundColor: item.color,
-                          },
-                        }}
-                      >
-                        {item.icon}
-                      </IconButton>
-                    </motion.div>
-                  ))}
-                </Box>
-              </Box>
             </motion.div>
           </Grid>
 
