@@ -11,6 +11,7 @@ import { Avatar, Box } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { motion } from "framer-motion";
+import LogoSection from "./components/LogoSection";
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
         <PremiumLanding />
         <AdsAgencySection />
         <GoogleAdsExpertSection />
+        <LogoSection />
         <TestimonialsSection />
         <Footer />
       </Box>

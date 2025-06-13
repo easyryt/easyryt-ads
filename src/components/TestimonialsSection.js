@@ -51,7 +51,6 @@ const TestimonialsSection = () => {
         py: 10,
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(135deg, #0a192f 0%, #1a365d 100%)",
         "&:before": {
           content: '""',
           position: "absolute",
@@ -60,8 +59,6 @@ const TestimonialsSection = () => {
           width: "600px",
           height: "600px",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(26, 115, 232, 0.15) 0%, rgba(255,255,255,0) 70%)",
           zIndex: 0,
         },
         "&:after": {
@@ -72,8 +69,6 @@ const TestimonialsSection = () => {
           width: "600px",
           height: "600px",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(15, 157, 88, 0.1) 0%, rgba(255,255,255,0) 70%)",
           zIndex: 0,
         },
       }}

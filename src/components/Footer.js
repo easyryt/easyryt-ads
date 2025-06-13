@@ -137,38 +137,6 @@ const Footer = () => {
               >
                 Our Offices
               </Typography>
-
-              <Box
-                mb={3}
-                component={motion.div}
-                whileHover={{
-                  y: -5,
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                }}
-                sx={{
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  p: 3,
-                  borderRadius: "8px",
-                  borderLeft: "3px solid #ff4b2b",
-                  transition: "all 0.3s ease",
-                  backdropFilter: "blur(4px)",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-                }}
-              >
-                <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                  <LocationCityIcon sx={{ mr: 1.5, color: "#ff8a00" }} />
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 600, color: "#fff" }}
-                  >
-                    Delhi Office
-                  </Typography>
-                </Box>
-                <Typography variant="body1" sx={{ ml: 4.5, color: "#e0e0e0" }}>
-                  F 298, Sec 63, Noida, 201301
-                </Typography>
-              </Box>
-
               <Box
                 component={motion.div}
                 whileHover={{

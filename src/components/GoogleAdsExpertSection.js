@@ -79,8 +79,6 @@ const StatBox = ({ label, clicks, conversions, costPerConv, roas, color }) => (
         borderRadius: 4,
         p: 3,
         minWidth: 180,
-        background:
-          "linear-gradient(145deg, rgba(20, 25, 45, 0.8), rgba(15, 20, 40, 0.95))",
         backdropFilter: "blur(14px)",
         position: "relative",
         overflow: "hidden",
@@ -92,8 +90,7 @@ const StatBox = ({ label, clicks, conversions, costPerConv, roas, color }) => (
           top: 0,
           left: 0,
           right: 0,
-          height: 4,
-          background: color,
+          height: 4
         },
       }}
     >
@@ -235,8 +232,6 @@ const ProofGrid = ({ onImageClick }) => {
                     borderRadius: 2,
                     fontSize: 10,
                     fontWeight: 700,
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-                    border: "1px solid rgba(100, 120, 220, 0.3)",
                     zIndex: 2,
                   }}
                 >
@@ -289,7 +284,6 @@ const GoogleAdsExpertSection = () => {
         py: 10,
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(160deg, #0a0f25 0%, #131a35 100%)",
         "&:before": {
           content: '""',
           position: "absolute",
@@ -298,8 +292,6 @@ const GoogleAdsExpertSection = () => {
           width: 600,
           height: 600,
           borderRadius: "50%",
-          background:
-            "radial-gradient(rgba(56, 87, 200, 0.15), transparent 70%)",
           zIndex: 0,
         },
         "&:after": {
@@ -310,8 +302,6 @@ const GoogleAdsExpertSection = () => {
           width: 500,
           height: 500,
           borderRadius: "50%",
-          background:
-            "radial-gradient(rgba(56, 142, 60, 0.12), transparent 70%)",
           zIndex: 0,
         },
       }}
