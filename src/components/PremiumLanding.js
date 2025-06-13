@@ -406,9 +406,17 @@ const PremiumLanding = () => {
           </Box>
         </Box>
 
-        {/* Contact Info Section */}
-        <Grid container spacing={3} sx={{ mt: 6, justifyContent: "center" }}>
-          <Grid item xs={12} sm={4}>
+        {/* Contact Info Section - Updated for equal size */}
+        <Grid
+          container
+          spacing={3}
+          sx={{
+            mt: 6,
+            justifyContent: "center",
+            alignItems: "stretch", // Ensure all items stretch to same height
+          }}
+        >
+          <Grid item sx={{ display: "flex", width: "340px" }}>
             <Box
               sx={{
                 display: "flex",
@@ -419,6 +427,7 @@ const PremiumLanding = () => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(255, 255, 255, 0.15)",
                 transition: "all 0.3s",
+                flex: 1, // Take full available space
                 "&:hover": {
                   backgroundColor: "rgba(100, 255, 218, 0.1)",
                   borderColor: "rgba(100, 255, 218, 0.3)",
@@ -457,7 +466,7 @@ const PremiumLanding = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={12} sm={4}>
+          <Grid item sx={{ display: "flex", width: "340px" }}>
             <Box
               sx={{
                 display: "flex",
@@ -468,6 +477,7 @@ const PremiumLanding = () => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(255, 255, 255, 0.15)",
                 transition: "all 0.3s",
+                flex: 1, // Take full available space
                 "&:hover": {
                   backgroundColor: "rgba(100, 255, 218, 0.1)",
                   borderColor: "rgba(100, 255, 218, 0.3)",
@@ -506,7 +516,7 @@ const PremiumLanding = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={12} sm={4}>
+          <Grid item sx={{ display: "flex", width: "340px" }}>
             <Box
               sx={{
                 display: "flex",
@@ -517,6 +527,7 @@ const PremiumLanding = () => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(255, 255, 255, 0.15)",
                 transition: "all 0.3s",
+                flex: 1, // Take full available space
                 "&:hover": {
                   backgroundColor: "rgba(100, 255, 218, 0.1)",
                   borderColor: "rgba(100, 255, 218, 0.3)",
