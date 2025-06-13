@@ -1,8 +1,6 @@
 import React from "react";
-import { Box, Typography, Avatar, Container, useTheme } from "@mui/material";
+import { Box, Typography, Container, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import StarIcon from "@mui/icons-material/Star";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -14,37 +12,32 @@ import "swiper/css/pagination";
 const testimonials = [
   {
     text: `We were wasting thousands on Ads before working with Visibility Gurus. Now, we're getting qualified leads for half the cost.`,
-    name: "Lisa R",
-    role: "Service-Based Business",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    name: "Rajesh Sharma",
     rating: 5,
   },
   {
     text: `Our Google Ads weren't working until Visibility Gurus took over. Within 90 days, our leads doubled, and our cost per acquisition dropped significantly`,
-    name: "John M.",
-    role: "Local Business Owner",
-    avatar: "https://randomuser.me/api/portraits/men/65.jpg",
+    name: "Priya Patel",
     rating: 5,
   },
   {
     text: `The team transformed our ad strategy completely. Our ROI increased by 220% in just 4 months - these are results we never thought possible.`,
-    name: "Sarah K.",
-    role: "E-commerce Brand",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "Vikram Singh",
     rating: 5,
   },
   {
     text: `Visibility Gurus helped us scale our e-commerce store 3x in just 6 months. Their data-driven approach is unmatched in the industry.`,
-    name: "Michael T.",
-    role: "E-commerce Entrepreneur",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    name: "Ananya Reddy",
     rating: 5,
   },
   {
     text: `After struggling with Facebook ads for years, Visibility Gurus optimized our campaigns and tripled our conversion rate in 60 days.`,
-    name: "Jennifer L.",
-    role: "SaaS Company",
-    avatar: "https://randomuser.me/api/portraits/women/76.jpg",
+    name: "Arjun Mehta",
+    rating: 5,
+  },
+  {
+    text: `Our sales increased by 150% within 3 months of working with Visibility Gurus. Their expertise in Google Ads is exceptional.`,
+    name: "Divya Iyer",
     rating: 5,
   },
 ];
@@ -58,6 +51,7 @@ const TestimonialsSection = () => {
         py: 10,
         position: "relative",
         overflow: "hidden",
+        background: "linear-gradient(135deg, #0a192f 0%, #1a365d 100%)",
         "&:before": {
           content: '""',
           position: "absolute",
@@ -66,6 +60,8 @@ const TestimonialsSection = () => {
           width: "600px",
           height: "600px",
           borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(26, 115, 232, 0.15) 0%, rgba(255,255,255,0) 70%)",
           zIndex: 0,
         },
         "&:after": {
@@ -217,7 +213,7 @@ const TestimonialsSection = () => {
               <SwiperSlide key={index}>
                 <Box
                   sx={{
-                    height: "100%",
+                    height: "250px", // Fixed height for all cards
                     background: "rgba(255, 255, 255, 0.05)",
                     backdropFilter: "blur(12px)",
                     WebkitBackdropFilter: "blur(12px)",
@@ -238,30 +234,6 @@ const TestimonialsSection = () => {
                   }}
                 >
                   <Box>
-                    <Box
-                      sx={{
-                        color: "#FFD700",
-                        mb: 3,
-                        display: "flex",
-                      }}
-                    >
-                      {[...Array(5)].map((_, i) =>
-                        i < item.rating ? (
-                          <StarIcon
-                            key={i}
-                            fontSize="small"
-                            sx={{ fontSize: "1.4rem" }}
-                          />
-                        ) : (
-                          <StarBorderIcon
-                            key={i}
-                            fontSize="small"
-                            sx={{ fontSize: "1.4rem" }}
-                          />
-                        )
-                      )}
-                    </Box>
-
                     <Typography
                       variant="body1"
                       sx={{
@@ -296,17 +268,7 @@ const TestimonialsSection = () => {
                       borderTop: "1px solid rgba(255, 255, 255, 0.1)",
                     }}
                   >
-                    <Avatar
-                      src={item.avatar}
-                      alt={item.name}
-                      sx={{
-                        width: 56,
-                        height: 56,
-                        border: "2px solid #4dabf5",
-                        boxShadow: "0 0 0 2px rgba(77, 171, 245, 0.3)",
-                      }}
-                    />
-                    <Box ml={2}>
+                    <Box>
                       <Typography
                         variant="subtitle1"
                         sx={{
@@ -316,15 +278,6 @@ const TestimonialsSection = () => {
                         }}
                       >
                         {item.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          fontSize: "0.9rem",
-                          color: "#a3b1c6",
-                        }}
-                      >
-                        {item.role}
                       </Typography>
                     </Box>
                   </Box>

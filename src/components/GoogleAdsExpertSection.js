@@ -1,23 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
-  Button,
   Grid,
-  Avatar,
   Container,
   Paper,
   useMediaQuery,
   useTheme,
+  Modal,
+  IconButton,
+  ImageList,
+  ImageListItem,
 } from "@mui/material";
-import CallIcon from "@mui/icons-material/Call";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import LanguageIcon from "@mui/icons-material/Language";
-import MailIcon from "@mui/icons-material/Mail";
-import ImageIcon from "@mui/icons-material/Image";
+import CloseIcon from "@mui/icons-material/Close";
+import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import { motion } from "framer-motion";
-import proofAnalytics from "./images/proof-analytics.png";
+import proof1 from "./images/proof1.png";
+import proof2 from "./images/proof2.png";
+import proof3 from "./images/proof3.png";
+import proof4 from "./images/proof4.png";
+import proof5 from "./images/proof5.png";
+import proof6 from "./images/proof6.png";
+
+const proofItems = [
+  {
+    img: proof1,
+    title: "E-commerce Results",
+    rows: 2,
+    cols: 2,
+    id: 1
+  },
+  {
+    img: proof2,
+    title: "Lead Generation Stats",
+    rows: 1,
+    cols: 1,
+    id: 2
+  },
+  {
+    img: proof3,
+    title: "ROI Improvement",
+    rows: 1,
+    cols: 1,
+    id: 3
+  },
+  {
+    img: proof4,
+    title: "Conversion Rate Growth",
+    rows: 1,
+    cols: 2,
+    id: 4
+  },
+  {
+    img: proof5,
+    title: "Cost Per Acquisition",
+    rows: 1,
+    cols: 2,
+    id: 5
+  },
+  {
+    img: proof6,
+    title: "Revenue Growth",
+    rows: 1,
+    cols: 1,
+    id: 6
+  },
+];
 
 const StatBox = ({ label, clicks, conversions, costPerConv, roas, color }) => (
   <motion.div
@@ -99,78 +148,140 @@ const StatBox = ({ label, clicks, conversions, costPerConv, roas, color }) => (
   </motion.div>
 );
 
-const ProofImageCard = () => (
-  <motion.div
-    whileHover={{ scale: 1.02 }}
-    whileTap={{ scale: 0.98 }}
-    style={{ width: "100%" }}
-  >
-    <Paper
-      elevation={0}
+const ProofGrid = ({ onImageClick }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  
+  return (
+    <ImageList
+      variant="quilted"
+      cols={isMobile ? 2 : 4}
+      rowHeight={isMobile ? 180 : 240}
+      gap={16}
       sx={{
-        borderRadius: 4,
+        margin: 0,
         overflow: "hidden",
-        height: { xs: 300, sm: 400 },
-        position: "relative",
-        background:
-          "linear-gradient(145deg, rgba(25, 30, 50, 0.9), rgba(20, 25, 45, 0.95))",
-        backdropFilter: "blur(8px)",
-        border: "1px solid rgba(76, 95, 172, 0.3)",
-        boxShadow: "0 20px 50px rgba(0, 0, 0, 0.4)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        borderRadius: 3,
       }}
     >
-      <Box
-        component="img"
-        src={proofAnalytics}
-        alt="Campaign Performance Proof"
-        sx={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center",
-          transition: "transform 0.5s ease",
-          filter: "brightness(0.9) contrast(1.1)",
-          "&:hover": {
-            transform: "scale(1.05)",
-          },
-        }}
-      />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
-        <Box
+      {proofItems.map((item) => (
+        <ImageListItem 
+          key={item.id} 
+          cols={item.cols || 1} 
+          rows={item.rows || 1}
           sx={{
-            position: "absolute",
-            top: 16,
-            right: 16,
-            bgcolor: "rgba(28, 52, 121, 0.9)",
-            color: "#fff",
-            px: 2,
-            py: 1,
-            borderRadius: 2,
-            fontSize: 14,
-            fontWeight: 800,
-            letterSpacing: 1,
-            backdropFilter: "blur(4px)",
-            boxShadow: "0 8px 20px rgba(0,0,0,0.25)",
-            border: "1px solid rgba(100, 120, 220, 0.3)",
+            overflow: "hidden",
+            borderRadius: 3,
+            position: "relative",
+            transition: "all 0.3s",
+            "&:hover": {
+              transform: "translateY(-5px)",
+              boxShadow: "0 25px 50px rgba(76, 95, 172, 0.5)",
+            },
           }}
         >
-          PERFORMANCE PROOF
-        </Box>
-      </motion.div>
-    </Paper>
-  </motion.div>
-);
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 * item.id }}
+            whileHover={{ scale: 1.03 }}
+            style={{ height: "100%" }}
+          >
+            <Paper
+              elevation={0}
+              onClick={() => onImageClick(item)}
+              sx={{
+                height: "100%",
+                width: "100%",
+                position: "relative",
+                background: "#1a1f38",
+                border: "1px solid rgba(76, 95, 172, 0.3)",
+                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+                cursor: "pointer",
+                overflow: "hidden",
+              }}
+            >
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <Box
+                  component="img"
+                  src={item.img}
+                  alt={item.title}
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    filter: "brightness(0.9)",
+                  }}
+                />
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 8,
+                    right: 8,
+                    bgcolor: "rgba(28, 52, 121, 0.9)",
+                    color: "#fff",
+                    px: 1,
+                    py: 0.5,
+                    borderRadius: 2,
+                    fontSize: 10,
+                    fontWeight: 700,
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                    border: "1px solid rgba(100, 120, 220, 0.3)",
+                    zIndex: 2,
+                  }}
+                >
+                  PROOF {item.id}
+                </Box>
+                <Box
+                  component={motion.div}
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: "rgba(0,0,0,0.5)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    zIndex: 1,
+                  }}
+                >
+                  <ZoomInIcon sx={{ color: "#fff", fontSize: 40 }} />
+                </Box>
+              </Box>
+            </Paper>
+          </motion.div>
+        </ImageListItem>
+      ))}
+    </ImageList>
+  );
+};
 
 const GoogleAdsExpertSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
+
+  const handleCloseLightbox = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <Box
@@ -178,6 +289,7 @@ const GoogleAdsExpertSection = () => {
         py: 10,
         position: "relative",
         overflow: "hidden",
+        background: "linear-gradient(160deg, #0a0f25 0%, #131a35 100%)",
         "&:before": {
           content: '""',
           position: "absolute",
@@ -186,6 +298,9 @@ const GoogleAdsExpertSection = () => {
           width: 600,
           height: 600,
           borderRadius: "50%",
+          background:
+            "radial-gradient(rgba(56, 87, 200, 0.15), transparent 70%)",
+          zIndex: 0,
         },
         "&:after": {
           content: '""',
@@ -320,97 +435,6 @@ const GoogleAdsExpertSection = () => {
                   </motion.li>
                 </ul>
               </Box>
-
-              <Box mt={4} display="flex" flexDirection="column" gap={3}>
-                <Box display="flex" flexWrap="wrap" alignItems="center" gap={3}>
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    gap={1.5}
-                    sx={{ color: "#4dabf5" }}
-                  >
-                    <CallIcon fontSize="medium" sx={{ color: "#4dabf5" }} />
-                    <Typography
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: "1.1rem",
-                        color: "#e0e6ff",
-                      }}
-                    >
-                      +91 9958280709
-                    </Typography>
-                  </Box>
-
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    gap={1.5}
-                    sx={{ color: "#ff6b6b" }}
-                  >
-                    <MailIcon fontSize="medium" sx={{ color: "#ff6b6b" }} />
-                    <Typography
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: "1.1rem",
-                        color: "#e0e6ff",
-                      }}
-                    >
-                      info@easyryt.com
-                    </Typography>
-                  </Box>
-                </Box>
-
-                <Box display="flex" flexWrap="wrap" alignItems="center" gap={3}>
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    gap={1.5}
-                    sx={{ color: "#ffd43b" }}
-                  >
-                    <LanguageIcon fontSize="medium" sx={{ color: "#ffd43b" }} />
-                    <Typography
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: "1.1rem",
-                        color: "#e0e6ff",
-                      }}
-                    >
-                      easyryt.com
-                    </Typography>
-                  </Box>
-
-                  <motion.div
-                    whileHover={{
-                      scale: 1.05,
-                      boxShadow: "0 10px 30px rgba(37, 211, 102, 0.5)",
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button
-                      variant="contained"
-                      startIcon={<WhatsAppIcon />}
-                      size="medium"
-                      href="https://wa.me/919958280709"
-                      target="_blank"
-                      sx={{
-                        backgroundColor: "#25D366",
-                        borderRadius: "12px",
-                        px: 4,
-                        py: 1.4,
-                        fontWeight: 700,
-                        fontSize: "1rem",
-                        boxShadow: "0 10px 30px rgba(37, 211, 102, 0.4)",
-                        "&:hover": {
-                          backgroundColor: "#128C7E",
-                          boxShadow: "0 15px 35px rgba(37, 211, 102, 0.6)",
-                        },
-                      }}
-                    >
-                      WhatsApp Now
-                    </Button>
-                  </motion.div>
-                </Box>
-              </Box>
             </motion.div>
           </Grid>
 
@@ -499,8 +523,8 @@ const GoogleAdsExpertSection = () => {
                 </Grid>
               </Grid>
 
-              {/* Single Proof Image Section */}
-              <Box mt={8}>
+              {/* Proof Images Grid */}
+              <Box mt={6}>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -518,11 +542,11 @@ const GoogleAdsExpertSection = () => {
                       letterSpacing: 0.5,
                     }}
                   >
-                    <ImageIcon sx={{ fontSize: 32, color: "#ffd43b" }} />{" "}
-                    Campaign Performance Proof
+                    <ZoomInIcon sx={{ fontSize: 32, color: "#ffd43b" }} />{" "}
+                    Campaign Performance Proofs
                   </Typography>
 
-                  <ProofImageCard />
+                  <ProofGrid onImageClick={handleImageClick} />
                 </motion.div>
               </Box>
             </motion.div>
@@ -530,62 +554,75 @@ const GoogleAdsExpertSection = () => {
         </Grid>
       </Container>
 
-      {/* Floating Contact Buttons */}
-      <Box
+      {/* Lightbox Modal */}
+      <Modal
+        open={Boolean(selectedImage)}
+        onClose={handleCloseLightbox}
         sx={{
-          position: "fixed",
-          bottom: 24,
-          right: 24,
           display: "flex",
-          gap: 2,
-          zIndex: 1000,
+          alignItems: "center",
+          justifyContent: "center",
+          backdropFilter: "blur(12px)",
         }}
       >
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 2.5 }}
+        <Box
+          sx={{
+            position: "relative",
+            outline: "none",
+            maxWidth: "90vw",
+            maxHeight: "90vh",
+          }}
         >
-          <Avatar
-            component="a"
-            href="tel:+919958280709"
-            sx={{
-              background: "linear-gradient(135deg, #2196F3, #0d47a1)",
-              width: 64,
-              height: 64,
-              cursor: "pointer",
-              boxShadow: "0 10px 25px rgba(33, 150, 243, 0.5)",
-              border: "1px solid rgba(100, 150, 255, 0.3)",
-            }}
-          >
-            <CallIcon sx={{ fontSize: 32 }} />
-          </Avatar>
-        </motion.div>
-
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 2.5, delay: 0.5 }}
-        >
-          <Avatar
-            component="a"
-            href="https://wa.me/919958280709"
-            target="_blank"
-            sx={{
-              background: "linear-gradient(135deg, #25D366, #1b5e20)",
-              width: 64,
-              height: 64,
-              cursor: "pointer",
-              boxShadow: "0 10px 25px rgba(37, 211, 102, 0.5)",
-              border: "1px solid rgba(100, 255, 150, 0.3)",
-            }}
-          >
-            <WhatsAppIcon sx={{ fontSize: 32 }} />
-          </Avatar>
-        </motion.div>
-      </Box>
+          {selectedImage && (
+            <>
+              <Box
+                component="img"
+                src={selectedImage.img}
+                alt={selectedImage.title}
+                sx={{
+                  maxWidth: "100%",
+                  maxHeight: "80vh",
+                  borderRadius: 2,
+                  boxShadow: "0 30px 60px rgba(0,0,0,0.5)",
+                  objectFit: "contain",
+                  backgroundColor: "#0a0f25",
+                }}
+              />
+              <IconButton
+                onClick={handleCloseLightbox}
+                sx={{
+                  position: "absolute",
+                  top: 16,
+                  right: 16,
+                  backgroundColor: "rgba(0,0,0,0.7)",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "rgba(0,0,0,0.9)",
+                  },
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+              <Typography
+                variant="h6"
+                sx={{
+                  position: "absolute",
+                  bottom: 16,
+                  left: 16,
+                  color: "white",
+                  backgroundColor: "rgba(0,0,0,0.7)",
+                  px: 2,
+                  py: 1,
+                  borderRadius: 1,
+                  fontWeight: 600,
+                }}
+              >
+                {selectedImage.title}
+              </Typography>
+            </>
+          )}
+        </Box>
+      </Modal>
     </Box>
   );
 };
