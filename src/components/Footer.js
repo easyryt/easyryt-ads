@@ -22,6 +22,7 @@ const Footer = () => {
   const handleWhatsApp = () => {
     window.open("https://wa.me/919958280709", "_blank");
   };
+
   return (
     <Box
       component="footer"
@@ -91,15 +92,28 @@ const Footer = () => {
           pb: 4,
         }}
       >
-        {/* Main content grid - Modified to have 3 equal columns */}
-        <Grid container spacing={{ xs: 3, md: 4 }}>
+        {/* Fixed Grid using CSS Grid */}
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr 1fr" },
+            gap: { xs: 0, md: 3 },
+            mb: 4,
+          }}
+        >
           {/* Offices section */}
-          <Grid item xs={12} md={4}>
+          <Box
+            sx={{
+              mb: { xs: 4, md: 0 },
+              gridColumn: { xs: "1 / -1", md: "auto" },
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              style={{ height: "100%" }}
             >
               <Typography
                 variant="h5"
@@ -185,15 +199,21 @@ const Footer = () => {
                 </Typography>
               </Box>
             </motion.div>
-          </Grid>
+          </Box>
 
           {/* Contact Info */}
-          <Grid item xs={12} md={4}>
+          <Box
+            sx={{
+              mb: { xs: 4, md: 0 },
+              gridColumn: { xs: "1 / -1", md: "auto" },
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
+              style={{ height: "100%" }}
             >
               <Typography
                 variant="h5"
@@ -265,10 +285,14 @@ const Footer = () => {
                 </Box>
               </Box>
             </motion.div>
-          </Grid>
+          </Box>
 
-          {/* CTA Section - Fixed to take 4 columns */}
-          <Grid item xs={12} md={4}>
+          {/* CTA Section */}
+          <Box
+            sx={{
+              gridColumn: { xs: "1 / -1", md: "auto" },
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -301,10 +325,7 @@ const Footer = () => {
                   Expand Your Digital Reach
                 </Typography>
 
-                <Typography
-                  variant="body1"
-                  sx={{ mb: 3, color: "#e0e0e0", width: "300px" }}
-                >
+                <Typography variant="body1" sx={{ mb: 3, color: "#e0e0e0" }}>
                   Partner with our marketing wizards to elevate your brand and
                   reach new audiences. Let's create something extraordinary
                   together.
@@ -337,8 +358,8 @@ const Footer = () => {
                 </motion.div>
               </Box>
             </motion.div>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         <br />
         <br />
@@ -372,40 +393,40 @@ const Footer = () => {
           >
             {["Privacy Policy", "Terms of Service", "Cookies", "Sitemap"].map(
               (item, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href="#"
-                    sx={{
-                      color: "#aaa",
-                      textDecoration: "none",
-                      position: "relative",
-                      fontSize: "0.9rem",
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href="#"
+                  sx={{
+                    color: "#aaa",
+                    textDecoration: "none",
+                    position: "relative",
+                    fontSize: "0.9rem",
+                    "&:after": {
+                      content: '""',
+                      position: "absolute",
+                      width: 0,
+                      height: "1px",
+                      bottom: -2,
+                      left: 0,
+                      backgroundColor: "#ff8a00",
+                      transition: "width 0.3s",
+                    },
+                    "&:hover": {
+                      color: "#fff",
                       "&:after": {
-                        content: '""',
-                        position: "absolute",
-                        width: 0,
-                        height: "1px",
-                        bottom: -2,
-                        left: 0,
-                        backgroundColor: "#ff8a00",
-                        transition: "width 0.3s",
+                        width: "100%",
                       },
-                      "&:hover": {
-                        color: "#fff",
-                        "&:after": {
-                          width: "100%",
-                        },
-                      },
-                    }}
-                  >
-                    {item}
-                  </Link>
-                </motion.div>
-              )
+                    },
+                  }}
+                >
+                  {item}
+                </Link>
+              </motion.div>
+            )
             )}
           </Box>
         </Box>
