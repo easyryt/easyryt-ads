@@ -6,17 +6,12 @@ import {
   Box,
   IconButton,
   Container,
-  Menu,
-  MenuItem,
   Button,
-  Fade,
-  Divider,
 } from "@mui/material";
 import {
   WhatsApp,
   MailOutline,
   Phone,
-  Menu as MenuIcon,
 } from "@mui/icons-material";
 import { styled, alpha } from "@mui/material/styles";
 
@@ -138,18 +133,14 @@ const CompanyName = styled(Typography)({
   },
 });
 
+const MobileMenuButton = styled(IconButton)(({ theme }) => ({
+  display: { xs: "flex", md: "none" },
+  color: "#e0e0ff",
+  marginLeft: theme.spacing(2),
+}));
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleWhatsApp = () => {
     window.open("https://wa.me/919958280709", "_blank");
@@ -165,11 +156,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -208,117 +195,49 @@ const Header = () => {
           </Box>
 
           <ContactInfo>
-            <ContactItem onClick={handleEmail}>
+            {/* Email - Hidden on mobile */}
+            <ContactItem 
+              onClick={handleEmail}
+              sx={{ display: { xs: "none", md: "flex" } }}
+            >
               <IconWrapper>
                 <MailOutline
                   fontSize="small"
                   sx={{ color: "#8a2be2", fontSize: "1.1rem" }}
                 />
               </IconWrapper>
-              <ContactText sx={{ display: { xs: "none", lg: "block" } }}>
-                info@easyryt.com
-              </ContactText>
+              <ContactText>info@easyryt.com</ContactText>
             </ContactItem>
 
-            <ContactItem onClick={handleCall}>
+            {/* Phone - Hidden on mobile */}
+            <ContactItem 
+              onClick={handleCall}
+              sx={{ display: { xs: "none", md: "flex" } }}
+            >
               <IconWrapper>
                 <Phone
                   fontSize="small"
                   sx={{ color: "#1e90ff", fontSize: "1.1rem" }}
                 />
               </IconWrapper>
-              <ContactText sx={{ display: { xs: "none", md: "block" } }}>
-                +91 9958280709
-              </ContactText>
+              <ContactText>+91 9958280709</ContactText>
             </ContactItem>
 
+            {/* WhatsApp - Hidden on mobile */}
             <WhatsAppButton
               aria-label="WhatsApp"
               onClick={handleWhatsApp}
               size="medium"
-              sx={{ marginLeft: "6px" }}
+              sx={{ 
+                display: { xs: "none", md: "flex" },
+                marginLeft: "6px"  
+              }}
             >
               <WhatsApp fontSize="medium" />
             </WhatsAppButton>
           </ContactInfo>
         </Toolbar>
       </Container>
-
-      {/* Mobile Menu */}
-      <Menu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Fade}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            background: "rgba(10, 15, 30, 0.95)",
-            backdropFilter: "blur(25px)",
-            border: "1px solid rgba(138, 43, 226, 0.2)",
-            borderRadius: "16px",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
-            minWidth: 250,
-            overflow: "visible",
-            mt: 1.5,
-            "& .MuiList-root": {
-              padding: "10px 0",
-            },
-            "&:before": {
-              content: '""',
-              display: "block",
-              position: "absolute",
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: "rgba(10, 15, 30, 0.95)",
-              transform: "translateY(-50%) rotate(45deg)",
-              zIndex: 0,
-              borderTop: "1px solid rgba(138, 43, 226, 0.2)",
-              borderLeft: "1px solid rgba(138, 43, 226, 0.2)",
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      >
-        <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.08)", my: 1 }} />
-        <MenuItem
-          onClick={handleEmail}
-          sx={{
-            color: "#d0d0ff",
-            padding: "12px 24px",
-            transition: "all 0.3s",
-            "&:hover": {
-              background: "rgba(138, 43, 226, 0.15)",
-              color: "#fff",
-            },
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <MailOutline sx={{ color: "#8a2be2" }} />
-            <Typography variant="body1">Email Us</Typography>
-          </Box>
-        </MenuItem>
-        <MenuItem
-          onClick={handleCall}
-          sx={{
-            color: "#d0d0ff",
-            padding: "12px 24px",
-            transition: "all 0.3s",
-            "&:hover": {
-              background: "rgba(138, 43, 226, 0.15)",
-              color: "#fff",
-            },
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <Phone sx={{ color: "#1e90ff" }} />
-            <Typography variant="body1">Call Us</Typography>
-          </Box>
-        </MenuItem>
-      </Menu>
     </PremiumAppBar>
   );
 };
