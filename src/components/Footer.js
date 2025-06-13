@@ -239,7 +239,14 @@ const Footer = () => {
               </Typography>
 
               <Box sx={{ mb: 3 }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    mb: 2,
+                    justifyContent: "center",
+                  }}
+                >
                   <EmailIcon sx={{ mr: 2, color: "#ff8a00" }} />
                   <Box>
                     <Typography variant="subtitle2" sx={{ color: "#aaa" }}>
@@ -254,7 +261,14 @@ const Footer = () => {
                   </Box>
                 </Box>
 
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    mb: 2,
+                    justifyContent: "center",
+                  }}
+                >
                   <PhoneIcon sx={{ mr: 2, color: "#ff8a00" }} />
                   <Box>
                     <Typography variant="subtitle2" sx={{ color: "#aaa" }}>
@@ -269,7 +283,14 @@ const Footer = () => {
                   </Box>
                 </Box>
 
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    mb: 2,
+                    justifyContent: "center",
+                  }}
+                >
                   <PlaceIcon sx={{ mr: 2, color: "#ff8a00" }} />
                   <Box>
                     <Typography variant="subtitle2" sx={{ color: "#aaa" }}>
@@ -393,40 +414,40 @@ const Footer = () => {
           >
             {["Privacy Policy", "Terms of Service", "Cookies", "Sitemap"].map(
               (item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="#"
-                  sx={{
-                    color: "#aaa",
-                    textDecoration: "none",
-                    position: "relative",
-                    fontSize: "0.9rem",
-                    "&:after": {
-                      content: '""',
-                      position: "absolute",
-                      width: 0,
-                      height: "1px",
-                      bottom: -2,
-                      left: 0,
-                      backgroundColor: "#ff8a00",
-                      transition: "width 0.3s",
-                    },
-                    "&:hover": {
-                      color: "#fff",
-                      "&:after": {
-                        width: "100%",
-                      },
-                    },
-                  }}
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {item}
-                </Link>
-              </motion.div>
-            )
+                  <Link
+                    href="#"
+                    sx={{
+                      color: "#aaa",
+                      textDecoration: "none",
+                      position: "relative",
+                      fontSize: "0.9rem",
+                      "&:after": {
+                        content: '""',
+                        position: "absolute",
+                        width: 0,
+                        height: "1px",
+                        bottom: -2,
+                        left: 0,
+                        backgroundColor: "#ff8a00",
+                        transition: "width 0.3s",
+                      },
+                      "&:hover": {
+                        color: "#fff",
+                        "&:after": {
+                          width: "100%",
+                        },
+                      },
+                    }}
+                  >
+                    {item}
+                  </Link>
+                </motion.div>
+              )
             )}
           </Box>
         </Box>
