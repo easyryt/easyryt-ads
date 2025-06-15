@@ -369,7 +369,7 @@ const Footer = () => {
           }}
         >
           <Typography variant="body2">
-            © Copyright 2024 Tangence. All Rights Reserved.
+            © Copyright 2024 Easyryt. All Rights Reserved.
           </Typography>
 
           <Box
@@ -380,43 +380,44 @@ const Footer = () => {
               justifyContent: "center",
             }}
           >
-            {["Privacy Policy", "Terms of Service", "Cookies", "Sitemap"].map(
-              (item, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href="#"
-                    sx={{
-                      color: "#aaa",
-                      textDecoration: "none",
-                      position: "relative",
-                      fontSize: "0.9rem",
+            {[
+              { name: "Privacy Policy", href: "/privacy-policy" },
+              { name: "Terms And Conditions", href: "/terms-and-conditions" },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href={item.href}
+                  sx={{
+                    color: "#aaa",
+                    textDecoration: "none",
+                    position: "relative",
+                    fontSize: "0.9rem",
+                    "&:after": {
+                      content: '""',
+                      position: "absolute",
+                      width: 0,
+                      height: "1px",
+                      bottom: -2,
+                      left: 0,
+                      backgroundColor: "#ff8a00",
+                      transition: "width 0.3s",
+                    },
+                    "&:hover": {
+                      color: "#fff",
                       "&:after": {
-                        content: '""',
-                        position: "absolute",
-                        width: 0,
-                        height: "1px",
-                        bottom: -2,
-                        left: 0,
-                        backgroundColor: "#ff8a00",
-                        transition: "width 0.3s",
+                        width: "100%",
                       },
-                      "&:hover": {
-                        color: "#fff",
-                        "&:after": {
-                          width: "100%",
-                        },
-                      },
-                    }}
-                  >
-                    {item}
-                  </Link>
-                </motion.div>
-              )
-            )}
+                    },
+                  }}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
+            ))}
           </Box>
         </Box>
       </Box>

@@ -6,6 +6,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import AdminLogin from './components/AdminDashboard/AdminLogin';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsAndConditions from './components/TermsAndConditions';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +19,8 @@ root.render(
         
         {/* Protected route (authentication to be added later) */}
         <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         
         {/* You can add more routes here */}
         <Route path="*" element={<App />} /> {/* fallback to main app */}
