@@ -11,34 +11,28 @@ import "swiper/css/pagination";
 
 const testimonials = [
   {
-    text: `We were wasting thousands on Ads before working with Visibility Gurus. Now, we're getting qualified leads for half the cost.`,
+    text: `Ads mein paise barbaad kar rahe the, fir Easyryt ne Google Ads theek kiye. Ab leads aate hain aur cost bhi kam hai. Accha kaam karte hain ye log.`,
     name: "Rajesh Sharma",
-    rating: 5,
   },
   {
-    text: `Our Google Ads weren't working until Visibility Gurus took over. Within 90 days, our leads doubled, and our cost per acquisition dropped significantly`,
+    text: `As a small business owner, I was clueless about digital ads. Easyryt team patiently explained everything in Hindi and Marathi. 3 mahine mein sales noticeable badh gaye!`,
     name: "Priya Patel",
-    rating: 5,
   },
   {
-    text: `The team transformed our ad strategy completely. Our ROI increased by 220% in just 4 months - these are results we never thought possible.`,
+    text: `Maine pehle kisi agency ko try kiya tha - koi fayda nahi hua. Easyryt ne actual e-commerce figures improve kiye. Ab ROI sahi dikh raha hai, bas thoda aur time lagega.`,
     name: "Vikram Singh",
-    rating: 5,
   },
   {
-    text: `Visibility Gurus helped us scale our e-commerce store 3x in just 6 months. Their data-driven approach is unmatched in the industry.`,
+    text: `For my saree business, they created regional Facebook ads targeting Gujarat and Maharashtra. Orders increased gradually - not overnight magic, but steady growth. Support team bahut cooperative hai.`,
     name: "Ananya Reddy",
-    rating: 5,
   },
   {
-    text: `After struggling with Facebook ads for years, Visibility Gurus optimized our campaigns and tripled our conversion rate in 60 days.`,
+    text: `As an IT startup, we needed quality leads. Easyryt reduced our wasted ad spend by 60%? Shayad 70%? Exact yaad nahi, par clearly cost-effective campaigns banaye.`,
     name: "Arjun Mehta",
-    rating: 5,
   },
   {
-    text: `Our sales increased by 150% within 3 months of working with Visibility Gurus. Their expertise in Google Ads is exceptional.`,
+    text: `Unhone humare Google Ads account ko properly audit kiya. Pata chala hum galat keywords target kar rahe the! Ab relevant traffic aata hai. 4 mahine se unke saath kaam kar rahe hain.`,
     name: "Divya Iyer",
-    rating: 5,
   },
 ];
 

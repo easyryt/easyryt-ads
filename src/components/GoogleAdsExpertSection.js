@@ -84,13 +84,15 @@ const StatBox = ({ label, clicks, conversions, costPerConv, roas, color }) => (
         overflow: "hidden",
         border: "1px solid rgba(76, 95, 172, 0.3)",
         boxShadow: "0 15px 35px rgba(0, 0, 0, 0.3)",
+        backgroundColor: "rgba(30, 35, 65, 0.7)",
         "&:before": {
           content: '""',
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
-          height: 4
+          height: 4,
+          background: color,
         },
       }}
     >
@@ -99,10 +101,10 @@ const StatBox = ({ label, clicks, conversions, costPerConv, roas, color }) => (
         sx={{
           fontWeight: 800,
           letterSpacing: 1,
-          color: color,
+          color: "white",
           mb: 1.5,
           display: "block",
-          textShadow: "0 0 8px rgba(255,255,255,0.1)",
+          textShadow: `0 0 10px ${color}, 0 0 20px ${color}`,
         }}
       >
         {label}
@@ -284,6 +286,7 @@ const GoogleAdsExpertSection = () => {
         py: 10,
         position: "relative",
         overflow: "hidden",
+        background: "radial-gradient(circle at top right, rgba(25, 50, 100, 0.3), transparent 400px), radial-gradient(circle at bottom left, rgba(20, 80, 120, 0.2), transparent 400px)",
         "&:before": {
           content: '""',
           position: "absolute",
@@ -293,6 +296,7 @@ const GoogleAdsExpertSection = () => {
           height: 600,
           borderRadius: "50%",
           zIndex: 0,
+          background: "radial-gradient(rgba(77, 171, 245, 0.15), transparent 70%)",
         },
         "&:after": {
           content: '""',
@@ -303,6 +307,7 @@ const GoogleAdsExpertSection = () => {
           height: 500,
           borderRadius: "50%",
           zIndex: 0,
+          background: "radial-gradient(rgba(81, 207, 102, 0.15), transparent 70%)",
         },
       }}
     >
@@ -445,10 +450,10 @@ const GoogleAdsExpertSection = () => {
                   >
                     <StatBox
                       label="BEFORE"
-                      clicks="14.9K"
-                      conversions="324.49"
-                      costPerConv="180"
-                      roas="583.52"
+                      clicks="8.2K"
+                      conversions="187"
+                      costPerConv="220"
+                      roas="420"
                       color="#ff6b6b"
                     />
                   </motion.div>
@@ -476,7 +481,7 @@ const GoogleAdsExpertSection = () => {
                         mx: isMobile ? 2 : 0,
                         my: isMobile ? 0 : 2,
                         transform: isMobile ? "rotate(90deg)" : "none",
-                        filter: "drop-shadow(0 0 8px rgba(81, 207, 102, 0.4))",
+                        filter: "drop-shadow(0 0 12px rgba(81, 207, 102, 0.8))",
                       }}
                     />
                   </motion.div>
@@ -484,11 +489,14 @@ const GoogleAdsExpertSection = () => {
                     variant="caption"
                     sx={{
                       fontWeight: 700,
-                      color: "#51cf66",
+                      color: "white",
                       textAlign: "center",
                       fontSize: "0.95rem",
                       letterSpacing: 0.5,
-                      textShadow: "0 0 8px rgba(81, 207, 102, 0.2)",
+                      textShadow: "0 0 10px rgba(81, 207, 102, 0.8)",
+                      p: 1,
+                      borderRadius: 1,
+                      bgcolor: "rgba(81, 207, 102, 0.15)",
                     }}
                   >
                     3 Months Results
@@ -503,10 +511,10 @@ const GoogleAdsExpertSection = () => {
                   >
                     <StatBox
                       label="AFTER"
-                      clicks="12.6K"
-                      conversions="496.60"
-                      costPerConv="70.40"
-                      roas="1489.19"
+                      clicks="14.9K"
+                      conversions="496"
+                      costPerConv="68"
+                      roas="1489"
                       color="#51cf66"
                     />
                   </motion.div>
@@ -518,7 +526,7 @@ const GoogleAdsExpertSection = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
+                    transition={{ delay: 0.6 }}
                 >
                   <Typography
                     variant="h5"
@@ -532,7 +540,7 @@ const GoogleAdsExpertSection = () => {
                       letterSpacing: 0.5,
                     }}
                   >
-                    <ZoomInIcon sx={{ fontSize: 32, color: "#ffd43b" }} />{" "}
+                    <ZoomInIcon sx={{ fontSize: 32, color: "#ffd43b", filter: "drop-shadow(0 0 8px rgba(255, 212, 59, 0.5))" }} />{" "}
                     Campaign Performance Proofs
                   </Typography>
 
