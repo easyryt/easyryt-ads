@@ -12,68 +12,98 @@ import CallIcon from "@mui/icons-material/Call";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { motion } from "framer-motion";
 import LogoSection from "./components/LogoSection";
+import { useRef, useEffect } from "react";
 
 function App() {
+  // Create a ref for the background element
+  const bgRef = useRef(null);
+
+  // Optimize background on initial render
+  useEffect(() => {
+    if (bgRef.current) {
+      // Promote to its own layer for GPU acceleration
+      bgRef.current.style.transform = "translateZ(0)";
+      bgRef.current.style.willChange = "transform";
+    }
+  }, []);
+
   return (
     <Box
       className="App"
       sx={{
         minHeight: "100vh",
-        background: `
-          radial-gradient(circle at 15% 50%, rgba(38, 132, 255, 0.15) 0%, transparent 25%),
-          radial-gradient(circle at 85% 30%, rgba(249, 224, 118, 0.2) 0%, transparent 25%),
-          radial-gradient(circle at 50% 80%, rgba(182, 140, 58, 0.15) 0%, transparent 30%),
-          linear-gradient(135deg, #0c1224 0%, #020714 100%)
-        `,
-        backgroundAttachment: "fixed",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
         position: "relative",
-        overflow: "hidden",
-        "&:before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: `
-            radial-gradient(circle at 80% 10%, rgba(26, 115, 232, 0.1) 0%, transparent 15%),
-            radial-gradient(circle at 20% 90%, rgba(182, 140, 58, 0.1) 0%, transparent 15%)
-          `,
-          zIndex: 0,
-          pointerEvents: "none",
-        },
-        "&:after": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 70%)",
-          zIndex: 0,
-          pointerEvents: "none",
-        },
+        overflowX: "hidden", // Only hide horizontal overflow
       }}
     >
+      {/* Optimized Background Element */}
+      <Box
+        ref={bgRef}
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+          background: `
+            radial-gradient(circle at 15% 50%, rgba(38, 132, 255, 0.15) 0%, transparent 25%),
+            radial-gradient(circle at 85% 30%, rgba(249, 224, 118, 0.2) 0%, transparent 25%),
+            radial-gradient(circle at 50% 80%, rgba(182, 140, 58, 0.15) 0%, transparent 30%),
+            linear-gradient(135deg, #0c1224 0%, #020714 100%)
+          `,
+          "&:before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: `
+              radial-gradient(circle at 80% 10%, rgba(26, 115, 232, 0.1) 0%, transparent 15%),
+              radial-gradient(circle at 20% 90%, rgba(182, 140, 58, 0.1) 0%, transparent 15%)
+            `,
+            pointerEvents: "none",
+          },
+          "&:after": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 70%)",
+            pointerEvents: "none",
+          },
+        }}
+      />
+
+      {/* Content Container */}
       <Box
         sx={{
           position: "relative",
           zIndex: 2,
+          // Enable smooth scrolling for entire content
+          scrollBehavior: "smooth",
+          // Allow vertical scrolling
+          overflowY: "auto",
+          overflowX: "hidden",
+          height: "100vh",
         }}
       >
         <Header />
         <br />
-        <br />
-        <PremiumLanding />
-        <AdsAgencySection />
-        <GoogleAdsExpertSection />
-        <LogoSection />
-        <TestimonialsSection />
+        <Box component="main">
+          <PremiumLanding />
+          <AdsAgencySection />
+          <GoogleAdsExpertSection />
+          <LogoSection />
+          <TestimonialsSection />
+        </Box>
         <Footer />
       </Box>
+
       {/* Floating Contact Buttons */}
       <Box
         sx={{
