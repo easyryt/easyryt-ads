@@ -15,6 +15,31 @@ import LogoSection from "./components/LogoSection";
 import { useRef, useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    // Initialize dataLayer if not exists
+    window.dataLayer = window.dataLayer || [];
+
+    // Define gtag function
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+
+    // Set current gtag function
+    window.gtag = window.gtag || gtag;
+
+    // Only initialize if not already done
+    if (!window.gtag_initalized) {
+      window.gtag("js", new Date());
+      window.gtag("config", "G-N0QJD7JV9V");
+      window.gtag_initialized = true;
+
+      // Create and append script element
+      const script = document.createElement("script");
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-N0QJD7JV9V";
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }, []);
   // Create a ref for the background element
   const bgRef = useRef(null);
 

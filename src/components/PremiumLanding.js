@@ -16,10 +16,12 @@ import {
 import { Send, Phone, Email, LocationOn } from "@mui/icons-material";
 import { getDatabase, ref, push, set } from "firebase/database";
 import { app } from "./firebase";
+import { useNavigate } from "react-router-dom";
 
 const PremiumLanding = () => {
   const db = getDatabase(app);
-
+  const navigate = useNavigate();
+  
   // Form state
   const [formData, setFormData] = useState({
     name: "",
@@ -33,21 +35,34 @@ const PremiumLanding = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [phoneError, setPhoneError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    
+    if (name === "phone") {
+      const cleanedValue = value.replace(/\D/g, '').slice(0, 10);
+      setFormData(prev => ({ ...prev, [name]: cleanedValue }));
+      setPhoneError(cleanedValue.length < 10);
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const validatePhone = (phone) => {
+    return /^\d{10}$/.test(phone);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.serviceInterest) {
-      setSnackbarMessage("Please fill all required fields");
+    // Validate phone number
+    const isPhoneValid = validatePhone(formData.phone);
+    setPhoneError(!isPhoneValid);
+    
+    // Check all required fields
+    if (!formData.name || !formData.email || !formData.serviceInterest || !isPhoneValid) {
+      setSnackbarMessage("Please fill all required fields correctly");
       setSnackbarSeverity("error");
       setOpenSnackbar(true);
       return;
@@ -61,7 +76,12 @@ const PremiumLanding = () => {
       const newApplicationRef = push(franchiseRef);
       await set(newApplicationRef, formData);
 
-      // Reset form and show success
+      // Show success message
+      setSnackbarMessage("Data submitted successfully! Redirecting...");
+      setSnackbarSeverity("success");
+      setOpenSnackbar(true);
+      
+      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -69,15 +89,17 @@ const PremiumLanding = () => {
         serviceInterest: "",
       });
 
-      setSnackbarMessage("Data submitted successfully!");
-      setSnackbarSeverity("success");
+      // Delay navigation to allow user to see success message
+      setTimeout(() => {
+        navigate("/thankyou");
+      }, 2000);
     } catch (error) {
-      console.error("Error submitting form: ", error);
-      setSnackbarMessage("Error submitting data");
+      console.error("Firebase submit error: ", error);
+      setSnackbarMessage(`Submission failed: ${error.message || "Please try again later"}`);
       setSnackbarSeverity("error");
+      setOpenSnackbar(true);
     } finally {
       setLoading(false);
-      setOpenSnackbar(true);
     }
   };
 
@@ -132,7 +154,7 @@ const PremiumLanding = () => {
           </Typography>
         </Box>
 
-        {/* Split Section - Fixed layout */}
+        {/* Split Section - 60/40 layout */}
         <Box
           sx={{
             display: "flex",
@@ -141,10 +163,10 @@ const PremiumLanding = () => {
             alignItems: "stretch",
           }}
         >
-          {/* Left Section */}
+          {/* Left Section - 60% width */}
           <Box
             sx={{
-              flex: 1,
+              width: { xs: "100%", md: "60%" },
               p: { xs: 3, md: 6 },
               borderRadius: 4,
               backgroundColor: "rgba(255, 255, 255, 0.08)",
@@ -258,10 +280,10 @@ const PremiumLanding = () => {
             </Box>
           </Box>
 
-          {/* Right Section - Form */}
+          {/* Right Section - Form - 40% width */}
           <Box
             sx={{
-              flex: 1,
+              width: { xs: "100%", md: "40%" },
               p: { xs: 3, md: 5 },
               borderRadius: 4,
               backgroundColor: "white",
@@ -312,6 +334,7 @@ const PremiumLanding = () => {
                 margin="normal"
                 value={formData.name}
                 onChange={handleChange}
+                required
                 InputProps={{
                   sx: {
                     borderRadius: 2,
@@ -328,6 +351,8 @@ const PremiumLanding = () => {
                 margin="normal"
                 value={formData.email}
                 onChange={handleChange}
+                required
+                type="email"
                 InputProps={{
                   sx: {
                     borderRadius: 2,
@@ -339,11 +364,19 @@ const PremiumLanding = () => {
               <TextField
                 fullWidth
                 name="phone"
-                label="Phone Number"
+                label="Phone Number * (10 digits)"
                 variant="outlined"
                 margin="normal"
                 value={formData.phone}
                 onChange={handleChange}
+                required
+                error={phoneError}
+                helperText={phoneError ? "Must be 10 digits" : ""}
+                inputProps={{
+                  maxLength: 10,
+                  inputMode: "numeric",
+                  pattern: "[0-9]*"
+                }}
                 InputProps={{
                   sx: {
                     borderRadius: 2,
@@ -352,7 +385,7 @@ const PremiumLanding = () => {
                 }}
               />
 
-              <FormControl fullWidth margin="normal">
+              <FormControl fullWidth margin="normal" required>
                 <InputLabel>Service Interest *</InputLabel>
                 <Select
                   name="serviceInterest"
@@ -406,14 +439,14 @@ const PremiumLanding = () => {
           </Box>
         </Box>
 
-        {/* Contact Info Section - Updated for equal size */}
+        {/* Contact Info Section */}
         <Grid
           container
           spacing={3}
           sx={{
             mt: 6,
             justifyContent: "center",
-            alignItems: "stretch", // Ensure all items stretch to same height
+            alignItems: "stretch",
           }}
         >
           <Grid item sx={{ display: "flex", width: "340px" }}>
@@ -427,7 +460,7 @@ const PremiumLanding = () => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(255, 255, 255, 0.15)",
                 transition: "all 0.3s",
-                flex: 1, // Take full available space
+                flex: 1,
                 "&:hover": {
                   backgroundColor: "rgba(100, 255, 218, 0.1)",
                   borderColor: "rgba(100, 255, 218, 0.3)",
@@ -477,7 +510,7 @@ const PremiumLanding = () => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(255, 255, 255, 0.15)",
                 transition: "all 0.3s",
-                flex: 1, // Take full available space
+                flex: 1,
                 "&:hover": {
                   backgroundColor: "rgba(100, 255, 218, 0.1)",
                   borderColor: "rgba(100, 255, 218, 0.3)",
@@ -527,7 +560,7 @@ const PremiumLanding = () => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(255, 255, 255, 0.15)",
                 transition: "all 0.3s",
-                flex: 1, // Take full available space
+                flex: 1,
                 "&:hover": {
                   backgroundColor: "rgba(100, 255, 218, 0.1)",
                   borderColor: "rgba(100, 255, 218, 0.3)",
